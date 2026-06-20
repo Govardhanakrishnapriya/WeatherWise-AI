@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWise AI</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+<link rel="icon" href="images/logo.png">
+
+<meta name="theme-color" content="#06b6d4">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Background Animation -->
+    <div class="background"></div>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+            🌦️ WeatherWise AI
+        </div>
+
+        <div class="header-buttons">
+
+            <button id="locationBtn">
+                📍
+            </button>
+
+            <button id="themeBtn">
+                🌙
+            </button>
+
+            <button id="voiceBtn">
+                🎙️ RAJ
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- Search -->
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Search city..."
+            >
+
+            <button id="searchBtn">
+                Search
+            </button>
+           
+
+
+        </div>
+
+        <div id="suggestions"></div>
+
+    </section>
+
+    <!-- Favorites -->
+    <section class="chips-section">
+
+    <h3>⭐ Favorite Cities</h3>
+
+    <div class="favorites">
+
+    <select id="favoriteCities">
+    <option value="">
+        -- Select a favorite city --
+    </option>
+</select>
+
+<button id="saveBtn">
+    Save Current City
+</button>
+
+</div>
+
+</section>
+
+    <!-- Search History -->
+    <section class="chips-section">
+
+        <h3>🕒 Search History</h3>
+
+        <div id="historyCities">
+
+        </div>
+
+    </section>
+
+    <!-- Current Weather -->
+    <section class="current-weather glass weather-bg">
+
+        <div class="top">
+
+            <div>
+
+                <h1 id="cityName">
+                    --
+                </h1>
+
+                <p id="weatherDescription">
+                    --
+                </p>
+
+            </div>
+
+            <div>
+
+                <span id="weatherIcon">
+                    ☀️
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="temperature">
+
+            <h1 id="temperature">
+                --°C
+            </h1>
+
+            <p id="feelsLike">
+                Feels Like --
+            </p>
+
+        </div>
+
+        <div class="details">
+
+            <div class="card">
+                <h4>Humidity</h4>
+                <p id="humidity">--%</p>
+            </div>
+
+            <div class="card">
+                <h4>Wind</h4>
+                <p id="wind">-- km/h</p>
+            </div>
+
+            <div class="card">
+                <h4>Pressure</h4>
+                <p id="pressure">-- hPa</p>
+            </div>
+
+            <div class="card">
+                <h4>Visibility</h4>
+                <p id="visibility">-- km</p>
+            </div>
+
+            <div class="card">
+                <h4>UV Index</h4>
+                <p id="uvIndex">--</p>
+            </div>
+
+            <div class="card">
+                <h4>Sunrise</h4>
+                <p id="sunrise">--</p>
+            </div>
+
+            <div class="card">
+                <h4>Sunset</h4>
+                <p id="sunset">--</p>
+            </div>
+
+            <div class="card">
+                <h4>Feels Like</h4>
+                <p id="apparentTemp">--°C</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Hourly Forecast -->
+    <section class="glass">
+
+        <h2>
+            ⏰ Hourly Forecast
+        </h2>
+
+        <div id="hourlyForecast">
+
+        </div>
+
+    </section>
+
+    <!-- 5 Day Forecast -->
+    <section class="glass">
+
+        <h2>
+            📅 5 Day Forecast
+        </h2>
+
+        <div id="forecastContainer">
+
+        </div>
+
+    </section>
+
+    <!-- Chart -->
+    <section class="glass">
+
+        <h2>
+            📊 Weather Trends
+        </h2>
+
+        <div class="chart-container">
+    <canvas id="weatherChart"></canvas>
+</div>
+
+    </section>
+
+    <!-- AI Suggestions -->
+    <section class="glass">
+
+        <h2>
+            🤖 AI Suggestions
+        </h2>
+
+        <div id="aiSuggestion">
+
+            Stay hydrated and enjoy your day ☀️
+
+        </div>
+
+    </section>
+
+    <!-- Weather Alerts -->
+    <section class="glass">
+
+        <h2>
+            🚨 Weather Alerts
+        </h2>
+
+        <div id="weatherAlert">
+
+            No alerts
+
+        </div>
+
+    </section>
+
+    <!-- Voice Assistant -->
+    <section class="glass">
+
+        <h2>
+            🎙️ RAJ- The Voice Assistant
+        </h2>
+
+        <div class="voice-section">
+
+            <button id="startVoice">
+
+                Start Listening
+
+            </button>
+
+            <p id="voiceStatus">
+
+                Waiting...
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            WeatherWise AI • Built with HTML, CSS and JavaScript
+        </p>
+
+    </footer>
+
+    <script src="weather.js"></script>
+
+<script src="animations.js"></script>
+<script src="voice.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
