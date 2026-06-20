@@ -147,6 +147,10 @@ async function getWeather(city){
 
     sunset.innerHTML =
     set.toLocaleTimeString();
+    console.log(data.weather[0].main);
+console.log(data.weather[0].description);
+
+changeIcon(data.weather[0].description);
 
     setWeatherCardBackground(data.weather[0].main);
 
@@ -164,20 +168,75 @@ async function getWeather(city){
 // Change icon
 function changeIcon(condition){
 
-    if(condition === "Clear")
+    condition = condition.toLowerCase();
+
+    if(
+        condition.includes("clear sky")
+    ){
+
         weatherIcon.innerHTML = "☀️";
 
-    else if(condition === "Clouds")
+    }
+
+    else if(
+        condition.includes("few clouds") ||
+        condition.includes("scattered clouds") ||
+        condition.includes("broken clouds") ||
+        condition.includes("overcast clouds")
+    ){
+
         weatherIcon.innerHTML = "☁️";
 
-    else if(condition === "Rain")
+    }
+
+    else if(
+        condition.includes("rain")
+    ){
+
         weatherIcon.innerHTML = "🌧️";
 
-    else if(condition === "Snow")
+    }
+
+    else if(
+        condition.includes("drizzle")
+    ){
+
+        weatherIcon.innerHTML = "🌦️";
+
+    }
+
+    else if(
+        condition.includes("thunderstorm")
+    ){
+
+        weatherIcon.innerHTML = "⛈️";
+
+    }
+
+    else if(
+        condition.includes("snow")
+    ){
+
         weatherIcon.innerHTML = "❄️";
 
-    else
+    }
+
+    else if(
+        condition.includes("mist") ||
+        condition.includes("fog") ||
+        condition.includes("haze")
+    ){
+
+        weatherIcon.innerHTML = "🌫️";
+
+    }
+
+    else{
+
         weatherIcon.innerHTML = "🌤️";
+
+    }
+
 }
 
 // 5 day forecast
