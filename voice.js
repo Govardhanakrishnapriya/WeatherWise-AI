@@ -30,25 +30,21 @@ startVoice.addEventListener("click", () => {
 
 });
 
-recognition.onresult = function (event) {
+recognition.onresult = function(event){
 
     let command =
-        event.results[0][0].transcript.toLowerCase();
+    event.results[0][0].transcript.toLowerCase();
 
     voiceStatus.innerHTML =
-        "You said : " + command;
+    "You said : " + command;
 
-    console.log("Command =", command);
 
     // WEATHER
 
-    if (command.includes("weather")) {
+    if(command.includes("weather in")){
 
-        let words = command.split(" ");
-
-        let city = words[words.length - 1];
-
-        console.log("City =", city);
+        let city =
+        command.replace("weather in","").trim();
 
         getWeather(city);
 
@@ -56,20 +52,46 @@ recognition.onresult = function (event) {
 
     }
 
+
     // TIME
 
-    else if (command.includes("time")) {
+    else if(command.includes("time")){
 
         let time =
-            new Date().toLocaleTimeString();
+        new Date().toLocaleTimeString();
 
         speak("Current time is " + time);
 
     }
 
+
+    // DATE
+
+    else if(command.includes("date")){
+
+        let date =
+        new Date().toDateString();
+
+        speak("Today's date is " + date);
+
+    }
+
+
+    // TEMPERATURE
+
+    else if(command.includes("temperature")){
+
+        speak(
+            "Current temperature is "
+            + temperature.innerHTML
+        );
+
+    }
+
+
     // DARK MODE
 
-    else if (command.includes("dark mode")) {
+    else if(command.includes("dark mode")){
 
         document.body.classList.remove("light");
 
@@ -77,9 +99,10 @@ recognition.onresult = function (event) {
 
     }
 
+
     // LIGHT MODE
 
-    else if (command.includes("light mode")) {
+    else if(command.includes("light mode")){
 
         document.body.classList.add("light");
 
@@ -87,32 +110,102 @@ recognition.onresult = function (event) {
 
     }
 
-    // TEMPERATURE
 
-    else if (command.includes("temperature")) {
+    // REFRESH
 
-        speak(
-            "Current temperature is " +
-            temperature.innerHTML
-        );
+    else if(command.includes("refresh")){
 
-    }
-
-    // REFRESH WEATHER
-
-    else if (command.includes("refresh")) {
-
-        let city = cityName.innerHTML;
-
-        getWeather(city);
+        getWeather(cityName.innerHTML);
 
         speak("Refreshing weather");
 
     }
 
+
+    // WHO ARE YOU
+
+    else if(command.includes("who are you")){
+
+        speak(
+            "I am Raj, your personal voice assistant."
+        );
+
+    }
+
+
+    // GOOD MORNING
+
+    else if(command.includes("good morning")){
+
+        speak(
+            "Good morning. Have a wonderful day."
+        );
+
+    }
+
+
+    // GOOD NIGHT
+
+    else if(command.includes("good night")){
+
+        speak(
+            "Good night. Sweet dreams."
+        );
+
+    }
+
+
+    // OPEN YOUTUBE
+
+    else if(command.includes("open youtube")){
+
+        window.open(
+            "https://www.youtube.com",
+            "_blank"
+        );
+
+        speak(
+            "Opening YouTube"
+        );
+
+    }
+
+
+    // OPEN GOOGLE
+
+    else if(command.includes("open google")){
+
+        window.open(
+            "https://www.google.com",
+            "_blank"
+        );
+
+        speak(
+            "Opening Google"
+        );
+
+    }
+
+
+    // OPEN CHATGPT
+
+    else if(command.includes("open chatgpt")){
+
+        window.open(
+            "https://chatgpt.com",
+            "_blank"
+        );
+
+        speak(
+            "Opening Chat GPT"
+        );
+
+    }
+
+
     // JOKE
 
-    else if (command.includes("joke")) {
+    else if(command.includes("joke")){
 
         let jokes = [
 
@@ -125,23 +218,14 @@ recognition.onresult = function (event) {
         ];
 
         let joke =
-            jokes[Math.floor(Math.random() * jokes.length)];
+        jokes[Math.floor(Math.random()*jokes.length)];
 
         speak(joke);
 
     }
 
-    // WHO ARE YOU
 
-    else if (command.includes("who are you")) {
-
-        speak(
-            "I am Raj, your personal voice assistant."
-        );
-
-    }
-
-    else {
+    else{
 
         speak(
             "Sorry, I don't understand that command."
